@@ -19,6 +19,8 @@ public class WeatherController {
 
 
 //    @GetMapping
+
+
 //    public void addWeatherData(Today today) {weatherService.addWeather(today);}
 //
 //    @GetMapping("{date}")
