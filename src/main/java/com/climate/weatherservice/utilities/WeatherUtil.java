@@ -1,36 +1,25 @@
 package com.climate.weatherservice.utilities;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
+@ConfigurationProperties (prefix = "api")
+@Configuration ("weatherInfo")
 public class WeatherUtil {
 
-    private static ObjectMapper oMapper;
+    private String WEATHER_API_URL;
+    private String WEATHERA_API_KEY;
+    private String WEATHER_API_LAT_LONG;
 
-    static {
-        oMapper = new ObjectMapper();
-    }
+    public String getWEATHER_API_URL() {return WEATHER_API_URL;}
 
-    public static String convertJavaToJson(Object obj) {
-        String resultAsJson = "";
+    public void setWEATHER_API_URL(String WEATHER_API_URL) {this.WEATHER_API_URL = WEATHER_API_URL;}
 
-        try {
-            resultAsJson = oMapper.writeValueAsString(obj);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+    public String getWEATHERA_API_KEY() {return WEATHERA_API_KEY;}
 
-        return resultAsJson;
-    }
+    public void setWEATHERA_API_KEY(String WEATHERA_API_KEY) {this.WEATHERA_API_KEY = WEATHERA_API_KEY;}
 
-    public static <T> T convertJsonToJavaObj(String jsonString, Class<T> cls) {
-        T resultAsJavaObject = null;
-        try {
-            resultAsJavaObject = oMapper.readValue(jsonString, cls);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+    public String getWEATHER_API_LAT_LONG() {return WEATHER_API_LAT_LONG;}
 
-        return resultAsJavaObject;
-    }
+    public void setWEATHER_API_LAT_LONG(String WEATHER_API_LAT_LONG) {this.WEATHER_API_LAT_LONG = WEATHER_API_LAT_LONG;}
 }

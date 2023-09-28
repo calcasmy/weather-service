@@ -1,13 +1,12 @@
 package com.climate.weatherservice.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+import java.sql.Date;
 
 import java.sql.Blob;
-import java.util.Date;
+import java.time.LocalDate;
+//import java.util.Date;
 
 @Data
 @Entity
@@ -16,6 +15,7 @@ public class Today {
     @Id
     private Date date;
     private String location;
-    @Column( columnDefinition = "json" )
+//    @Column( columnDefinition = "json" )
+    @Column (columnDefinition = "TEXT")
     private String rawdata;
 }
